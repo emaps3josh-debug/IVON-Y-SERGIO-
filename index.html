@@ -54,7 +54,13 @@ a{color:inherit}
 @keyframes respirar{to{transform:scale(1.14)}}
 .portada-in{position:relative;z-index:2;text-align:center;color:var(--ivory);padding:24px 16px;width:100%;max-width:440px}
 .presenta{font-size:.66rem;letter-spacing:.42em;text-transform:uppercase;color:var(--gold-soft)}
-.portada-in .presenta{opacity:0;animation:aparecer 1.2s ease .3s forwards}
+.frase-sobre{font-family:var(--serif);font-style:italic;font-size:1.3rem;line-height:1.45;color:var(--ivory);opacity:0;animation:aparecer 1.4s ease .3s forwards;padding:0 10px}
+.frase-sobre span{display:block;font-family:var(--script);font-style:normal;font-size:2rem;line-height:1.5;color:var(--gold-soft);margin-top:2px;padding:0 .3em}
+.marca-portada{position:absolute;left:0;right:0;bottom:calc(18px + env(safe-area-inset-bottom));z-index:2;text-align:center;font-size:.56rem;letter-spacing:.42em;text-transform:uppercase;color:rgba(227,204,151,.45);opacity:0;animation:aparecer 1s ease 1.8s forwards}
+.cotiza{margin-top:34px;padding-top:22px;border-top:1px solid rgba(198,161,91,.15);max-width:320px;margin-left:auto;margin-right:auto}
+.cotiza p{font-size:.7rem;letter-spacing:.08em;color:rgba(248,244,236,.45);margin-bottom:10px}
+.cotiza .btn{padding:9px 16px;font-size:.6rem;letter-spacing:.2em;color:rgba(248,244,236,.75);border-color:rgba(198,161,91,.5)}
+.cotiza .btn svg{width:13px;height:13px}
 .instruccion{margin-top:30px;font-family:var(--serif);font-style:italic;font-size:1.15rem;color:var(--gold-soft);opacity:0;animation:aparecer 1s ease 1.4s forwards, latir 2.4s ease-in-out 2.4s infinite}
 .instruccion small{display:block;font-family:var(--sans);font-style:normal;font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(248,244,236,.55);margin-top:4px}
 @keyframes aparecer{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
@@ -466,7 +472,7 @@ const CONFIG = {
 <div id="portada" role="dialog" aria-label="Portada de la invitación">
   <div class="fondo"></div>
   <div class="portada-in">
-    <div class="presenta">Mendoza Invitaciones presenta</div>
+    <div class="frase-sobre">Hay momentos que merecen ser compartidos…<span>y tú eres parte del nuestro</span></div>
 
     <div class="sobre" id="sobre">
       <div class="sobre-fondo"><div class="forro"></div></div>
@@ -490,6 +496,8 @@ const CONFIG = {
     </div>
 
     <div class="instruccion">Toca el sello para abrir<small>♪ con música</small></div>
+  </div>
+  <div class="marca-portada">Mendoza Invitaciones
   </div>
 </div>
 
@@ -781,6 +789,11 @@ const CONFIG = {
   <div class="gracias reveal">¡Te esperamos!</div>
   <p class="muted" style="margin-top:6px;letter-spacing:.2em;font-size:.78rem;color:rgba(248,244,236,.7)">05 · DICIEMBRE · 2026</p>
   <div class="marca">Invitación digital por<b>MENDOZA INVITACIONES</b></div>
+  <div class="cotiza">
+    <p>¿Te gustó? Cotiza tu invitación digital</p>
+    <a class="btn" href="https://wa.me/527776242702?text=%C2%A1Hola!%20Vi%20la%20invitaci%C3%B3n%20de%20Ivon%20y%20Sergio%20y%20me%20gustar%C3%ADa%20cotizar%20una%20invitaci%C3%B3n%20digital%20%E2%9C%A8" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>777 624 2702</a>
+  </div>
 </footer>
 
 <script>
