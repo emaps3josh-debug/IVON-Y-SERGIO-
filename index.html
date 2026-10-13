@@ -28,6 +28,7 @@
   --sans:'Jost', system-ui, sans-serif;
   --grano-claro:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .36 0 0 0 0 .2 0 0 0 .1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   --grano-oscuro:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .85 0 0 0 0 .72 0 0 0 0 .45 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --lino:repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,transparent 1px 3px),repeating-linear-gradient(90deg,rgba(0,0,0,.09) 0 1px,transparent 1px 4px),repeating-linear-gradient(45deg,rgba(255,255,255,.015) 0 1px,transparent 1px 6px),var(--grano-oscuro);
   --rombos:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' fill='none' stroke='%23c6a15b' stroke-opacity='.09'%3E%3Cpath d='M28 0L56 28 28 56 0 28z'/%3E%3Cpath d='M28 10L46 28 28 46 10 28z' stroke-opacity='.05'/%3E%3Ccircle cx='28' cy='28' r='1.4' fill='%23c6a15b' fill-opacity='.14' stroke='none'/%3E%3C/svg%3E");
   --rombos-claro:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' fill='none' stroke='%23c6a15b' stroke-opacity='.14'%3E%3Cpath d='M28 0L56 28 28 56 0 28z'/%3E%3Ccircle cx='28' cy='28' r='1.3' fill='%23c6a15b' fill-opacity='.25' stroke='none'/%3E%3C/svg%3E");
 }
@@ -62,8 +63,8 @@ a{color:inherit}
 .sobre{position:relative;width:min(330px,84vw);aspect-ratio:1.5/1;margin:46px auto 0;perspective:1000px;
   opacity:0;animation:entraSobre 1.3s cubic-bezier(.2,.8,.2,1) .6s forwards}
 @keyframes entraSobre{from{opacity:0;transform:translateY(40px) rotate(-4deg) scale(.92)}to{opacity:1;transform:none}}
-.sobre-fondo{position:absolute;inset:0;background:linear-gradient(160deg,#1a2e58,#0f1d38);box-shadow:0 24px 50px rgba(0,0,0,.5);border:1px solid rgba(198,161,91,.4)}
-.sobre-carta{position:absolute;left:6%;right:6%;top:7%;height:88%;z-index:2;background:var(--ivory);color:var(--navy);
+.sobre-fondo{position:absolute;inset:0;background:var(--lino),linear-gradient(160deg,#1a2e58,#0f1d38);box-shadow:0 24px 50px rgba(0,0,0,.5);border:1px solid rgba(198,161,91,.4)}
+.sobre-carta{position:absolute;left:6%;right:6%;top:7%;height:88%;z-index:2;background:var(--grano-claro),linear-gradient(170deg,#fbf8f1,#efe7d6);color:var(--navy);
   display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10px;
   box-shadow:0 6px 18px rgba(0,0,0,.25);transition:transform 1.1s cubic-bezier(.3,.7,.2,1) .75s}
 .sobre-carta::before{content:"";position:absolute;inset:6px;border:1px solid rgba(198,161,91,.55);pointer-events:none}
@@ -72,15 +73,18 @@ a{color:inherit}
 .sobre-carta .nom .yy{font-size:.7em}
 .sobre-carta .fec{font-family:var(--serif);letter-spacing:.28em;font-size:.85rem}
 .sobre-frente{position:absolute;inset:0;z-index:3;pointer-events:none}
-.sobre-frente .bolsa{position:absolute;inset:0;background:linear-gradient(170deg,#1c315e,#13244a);clip-path:polygon(0 0,50% 56%,100% 0,100% 100%,0 100%)}
+.forro{position:absolute;left:3%;right:3%;top:2%;height:56%;clip-path:polygon(0 0,100% 0,50% 100%);
+  background:radial-gradient(circle at 50% 30%,rgba(255,255,255,.35),transparent 60%),repeating-linear-gradient(60deg,rgba(255,255,255,.12) 0 1px,transparent 1px 7px),repeating-linear-gradient(-60deg,rgba(120,90,30,.15) 0 1px,transparent 1px 7px),linear-gradient(135deg,#a07c3a,#e6cd92 40%,#b8914a 70%,#d9bd7c)}
+.sobre-solapa .tri::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 70%,rgba(0,0,0,.18))}
+.sobre-frente .bolsa{position:absolute;inset:0;background:var(--lino),linear-gradient(170deg,#1c315e,#13244a);clip-path:polygon(0 0,50% 56%,100% 0,100% 100%,0 100%)}
 .sobre-frente svg{position:absolute;inset:0;width:100%;height:100%}
 .sobre-solapa{position:absolute;left:0;right:0;top:0;height:60%;z-index:4;transform-origin:top center;
   transition:transform .9s cubic-bezier(.5,0,.3,1), z-index 0s linear .45s}
-.sobre-solapa .tri{position:absolute;inset:0;background:linear-gradient(180deg,#22396b,#172a52);clip-path:polygon(0 0,100% 0,50% 100%);filter:drop-shadow(0 4px 4px rgba(0,0,0,.3))}
+.sobre-solapa .tri{position:absolute;inset:0;background:var(--lino),radial-gradient(ellipse at 50% 0%,rgba(255,255,255,.08),transparent 60%),linear-gradient(180deg,#22396b,#172a52);clip-path:polygon(0 0,100% 0,50% 100%);filter:drop-shadow(0 4px 4px rgba(0,0,0,.3))}
 .sobre-solapa svg{position:absolute;inset:0;width:100%;height:100%}
-.sello{position:absolute;left:50%;top:60%;z-index:5;width:76px;height:76px;margin:-38px 0 0 -38px;border-radius:50%;border:0;cursor:pointer;
-  background:radial-gradient(circle at 34% 28%,#f0dba6,#c6a15b 45%,#94712f 100%);color:var(--navy);
-  font-family:var(--serif);font-style:italic;font-size:1.35rem;font-weight:500;letter-spacing:.04em;
+.sello{position:absolute;left:50%;top:60%;z-index:5;width:76px;height:76px;margin:-38px 0 0 -38px;border-radius:47% 53% 50% 50% / 52% 48% 53% 47%;border:0;cursor:pointer;
+  background:var(--grano-oscuro),radial-gradient(circle at 34% 28%,#f3e2b2,#c6a15b 45%,#8a6628 100%);color:var(--navy);
+  font-family:var(--serif);font-style:italic;font-size:1.35rem;text-shadow:0 1px 0 rgba(255,240,200,.6),0 -1px 0 rgba(80,55,15,.35);font-weight:500;letter-spacing:.04em;
   box-shadow:0 6px 18px rgba(0,0,0,.45), inset 0 0 0 3px rgba(255,255,255,.18), inset 0 -4px 8px rgba(0,0,0,.25);
   transition:transform .5s cubic-bezier(.5,-.4,.5,1.4), opacity .5s;animation:pulsoSello 2.4s ease-in-out 2s infinite}
 .sello::before{content:"";position:absolute;inset:7px;border-radius:50%;border:1px dashed rgba(14,26,48,.45)}
@@ -375,15 +379,16 @@ footer .marca b{display:block;font-family:var(--serif);font-weight:500;font-size
 /* Separador ornamental arriba de cada sección */
 .sep{position:absolute;top:26px;left:50%;width:170px;margin-left:-85px;color:var(--gold);opacity:.85;pointer-events:none;z-index:1}
 .sep svg{width:100%;height:auto;display:block}
-/* Ramitas doradas en las esquinas de las secciones */
-.rama{position:absolute;width:118px;color:var(--gold);opacity:.3;pointer-events:none;z-index:0;transform-origin:bottom left;animation:ramaMece 7s ease-in-out infinite}
-.rama svg{width:100%;height:auto;display:block}
-.rama.a{left:-14px;top:40px}
-.rama.b{right:-14px;bottom:30px;transform:scaleX(-1);transform-origin:bottom right;animation-name:ramaMeceB}
-.oscuro .rama{opacity:.22}
+/* Ramas y guirnaldas doradas (secciones claras) */
+.rama{position:absolute;width:96px;opacity:.6;pointer-events:none;z-index:0;transform-origin:bottom left;animation:ramaMece 7s ease-in-out infinite}
+.rama.a{left:-10px;top:30px}
+.rama.b{right:-10px;bottom:24px;transform:scaleX(-1);transform-origin:bottom right;animation-name:ramaMeceB}
 @keyframes ramaMece{0%,100%{rotate:0deg}50%{rotate:3deg}}
 @keyframes ramaMeceB{0%,100%{rotate:0deg}50%{rotate:-3deg}}
-@media(min-width:760px){.rama{width:170px}}
+.guirnalda{position:absolute;top:0;left:0;width:min(250px,62vw);opacity:.9;pointer-events:none;z-index:0;transform-origin:top left;animation:colgar 6s ease-in-out infinite}
+.guirnalda.der{left:auto;right:0;transform:scaleX(-1);transform-origin:top right}
+@keyframes colgar{0%,100%{rotate:0deg}50%{rotate:1.2deg}}
+@media(min-width:760px){.rama{width:140px}.guirnalda{width:340px}}
 /* Sol art déco detrás de la cuenta regresiva */
 .sol{position:absolute;left:50%;top:50%;width:760px;height:760px;margin:-380px 0 0 -380px;color:var(--gold);opacity:.09;pointer-events:none;animation:girar 90s linear infinite;z-index:0}
 @keyframes girar{to{transform:rotate(360deg)}}
@@ -394,13 +399,12 @@ footer .marca b{display:block;font-family:var(--serif);font-weight:500;font-size
 /* Puntos dorados flotantes (bokeh) en secciones oscuras */
 .bokeh{position:absolute;border-radius:50%;border:1px solid rgba(198,161,91,.35);pointer-events:none;z-index:0;animation:flotar 11s ease-in-out infinite alternate}
 
-/* Flores blancas reales en las secciones azules */
-.flor{position:absolute;pointer-events:none;z-index:0;--r:0deg;rotate:var(--r);filter:drop-shadow(0 12px 22px rgba(0,0,0,.45));animation:florMece 9s ease-in-out infinite}
-.flor.g{width:min(250px,50vw)}
-.flor.p{width:min(170px,38vw)}
-@keyframes florMece{0%,100%{rotate:var(--r)}50%{rotate:calc(var(--r) + 3deg)}}
-.flor-sobre{position:absolute;z-index:6;width:42%;left:-14%;bottom:-22%;pointer-events:none;rotate:12deg;filter:drop-shadow(0 10px 16px rgba(0,0,0,.5));transition:opacity .6s}
-#portada.abriendo .flor-sobre{opacity:0}
+/* Orquídeas blancas en las secciones azules */
+.flor{position:absolute;pointer-events:none;z-index:0;--r:0deg;rotate:var(--r);width:min(200px,46vw);filter:drop-shadow(0 14px 24px rgba(0,0,0,.5));animation:florMece 9s ease-in-out infinite;transform-origin:top center}
+@keyframes florMece{0%,100%{rotate:var(--r)}50%{rotate:calc(var(--r) + 2.5deg)}}
+@media(min-width:760px){.flor{width:280px}}
+.flor-sobre{position:absolute;z-index:6;width:46%;right:-16%;bottom:-48%;pointer-events:none;rotate:-8deg;filter:drop-shadow(0 12px 18px rgba(0,0,0,.55));transition:opacity .6s, transform .8s}
+#portada.abriendo .flor-sobre{opacity:0;transform:translateY(30px)}
 
 /* ================= VISTA PREVIA DEL MENSAJE ================= */
 .preview{margin:8px 0 22px;border:1px solid rgba(198,161,91,.55);overflow:hidden;box-shadow:0 10px 26px rgba(14,26,48,.1)}
@@ -465,7 +469,7 @@ const CONFIG = {
     <div class="presenta">Mendoza Invitaciones presenta</div>
 
     <div class="sobre" id="sobre">
-      <div class="sobre-fondo"></div>
+      <div class="sobre-fondo"><div class="forro"></div></div>
       <div class="sobre-carta">
         <div class="mini">Nuestra boda</div>
         <div class="nom">Ivon <span class="yy">y</span> Sergio</div>
@@ -481,7 +485,7 @@ const CONFIG = {
         <div class="tri"></div>
         <svg viewBox="0 0 150 60" preserveAspectRatio="none" fill="none" stroke="#c6a15b" stroke-opacity=".7"><path d="M0 0 L75 60 L150 0" vector-effect="non-scaling-stroke"/></svg>
       </div>
-      <img class="flor-sobre" src="img/flores.png" alt="">
+      <img class="flor-sobre" src="img/orquidea.png" alt="">
       <button class="sello" id="btnAbrir" aria-label="Abrir invitación">I<span style="font-size:.7em;margin:0 1px">y</span>S</button>
     </div>
 
@@ -1116,28 +1120,26 @@ const CONFIG = {
   $$('.rsvp-box, .cuenta-banco, .hero-marco').forEach(el => esquinas(el, false));
   $$('.lugar').forEach(el => esquinas(el, true));
 
-  // Una ramita dorada por sección clara, alternando lados
-  const SVG_RAMA = '<svg viewBox="0 0 120 170" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"><path d="M8 168C26 128 44 82 96 16"/><path d="M26 126c-14-3-22-14-21-27 12 3 20 13 21 27z"/><path d="M36 104c14-1 25-11 27-25-14 1-25 11-27 25z"/><path d="M47 84c-13-6-19-18-17-31 12 5 18 17 17 31z"/><path d="M60 64c12-3 21-13 22-26-12 3-21 13-22 26z"/><path d="M73 46c-11-6-15-17-12-28 10 5 14 16 12 28z"/><g fill="currentColor" stroke="none"><circle cx="100" cy="10" r="2"/><circle cx="20" cy="150" r="1.4"/><circle cx="84" cy="54" r="1.3"/></g></svg>';
-  $$('section:not(.oscuro)').forEach((sec, i) => {
-    const r = document.createElement('div'); r.className = 'rama ' + (i % 2 ? 'b' : 'a'); r.innerHTML = SVG_RAMA; sec.appendChild(r);
+  // Secciones claras: guirnalda dorada en la frase y en la confirmación; rama dorada en las demás
+  const claras = $$('section:not(.oscuro)');
+  claras.forEach((sec, i) => {
+    if (i === 0 || sec.id === 'rsvp'){
+      const g = document.createElement('img'); g.src = 'img/guirnalda-oro.png'; g.alt = ''; g.loading = 'lazy';
+      g.className = 'guirnalda' + (sec.id === 'rsvp' ? ' der' : ''); sec.appendChild(g);
+    } else {
+      const r = document.createElement('img'); r.src = 'img/rama-oro.png'; r.alt = ''; r.loading = 'lazy';
+      r.className = 'rama ' + (i % 2 ? 'b' : 'a'); sec.appendChild(r);
+    }
   });
 
-  // Flores blancas en las secciones azules (posiciones alternadas)
-  const FLORES = [
-    [{f:'flores',t:'g',css:'right:-70px;top:-40px',r:-160}, {f:'gypso',t:'p',css:'left:-30px;bottom:-10px',r:20}],
-    [{f:'flores',t:'g',css:'left:-80px;bottom:-50px',r:30}],
-    [{f:'gypso',t:'p',css:'left:-24px;top:10px',r:-25}, {f:'flores',t:'g',css:'right:-80px;bottom:-60px',r:-30}],
-    [{f:'flores',t:'g',css:'left:-80px;top:-50px',r:150}],
-  ];
-  $$('section.oscuro, footer').forEach((sec, i) => {
-    (FLORES[i % FLORES.length]).forEach(o => {
-      const im = document.createElement('img');
-      im.src = 'img/' + o.f + '.png'; im.alt = ''; im.loading = 'lazy';
-      im.className = 'flor ' + o.t; im.style.cssText = o.css; im.style.setProperty('--r', o.r + 'deg');
-      im.style.animationDelay = (-i * 2) + 's';
-      sec.appendChild(im);
-    });
-  });
+  // Secciones azules: orquídeas blancas solo donde hacen falta (cuenta regresiva y cierre)
+  const orq = (sec, css, r, espejo) => {
+    const im = document.createElement('img'); im.src = 'img/orquidea.png'; im.alt = ''; im.loading = 'lazy';
+    im.className = 'flor'; im.style.cssText = css + (espejo ? ';transform:scaleX(-1)' : ''); im.style.setProperty('--r', r + 'deg');
+    sec.appendChild(im);
+  };
+  orq($('#cuenta').closest('section'), 'right:-52px;top:-56px;width:min(160px,40vw)', 6, false);
+  orq($('footer'), 'left:-50px;top:-20px', -6, true);
 })();
 </script>
 </body>
