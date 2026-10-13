@@ -158,9 +158,9 @@ h2{font-family:var(--script);font-weight:400;font-size:clamp(2.6rem,10vw,3.6rem)
 .in .adorno::before,.in .adorno::after,.in.adorno::before,.in.adorno::after{transform:scaleX(1)}
 .in .adorno svg,.in.adorno svg{transform:scale(1);animation:latido 1.6s ease-in-out 1.4s infinite}
 @keyframes latido{0%,100%{transform:scale(1)}15%{transform:scale(1.25)}30%{transform:scale(1)}45%{transform:scale(1.18)}}
-.oscuro{background-color:var(--navy);background-image:var(--rombos),var(--grano-oscuro);color:var(--ivory)}
+.oscuro{background-color:var(--navy);background-image:none;color:var(--ivory)}
 .oscuro .muted{color:rgba(248,244,236,.7)}
-.crema{background-color:var(--ivory-2);background-image:var(--rombos-claro),var(--grano-claro)}
+.crema{background-color:var(--ivory-2);background-image:var(--grano-claro)}
 .muted{color:var(--muted)}
 p.lead{font-family:var(--serif);font-size:1.35rem;line-height:1.6;font-style:italic}
 
@@ -177,7 +177,7 @@ p.lead{font-family:var(--serif);font-size:1.35rem;line-height:1.6;font-style:ita
 .reveal.izq.in,.reveal.der.in,.reveal.zoom.in{transform:none}
 
 /* Brillo dorado en secciones oscuras */
-.oscuro::before{content:"";position:absolute;width:520px;height:520px;left:50%;top:-180px;margin-left:-260px;border-radius:50%;
+.oscuro::before{display:none;content:"";position:absolute;width:520px;height:520px;left:50%;top:-180px;margin-left:-260px;border-radius:50%;
   background:radial-gradient(circle,rgba(198,161,91,.13),transparent 65%);pointer-events:none;animation:flotar 9s ease-in-out infinite alternate}
 @keyframes flotar{to{transform:translate(40px,60px) scale(1.15)}}
 
@@ -352,9 +352,10 @@ p.lead{font-family:var(--serif);font-size:1.35rem;line-height:1.6;font-style:ita
 .contactos{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:8px}
 
 /* ---------- Footer ---------- */
-footer{background-color:var(--navy);background-image:var(--rombos),var(--grano-oscuro);color:var(--ivory);text-align:center;padding:70px 22px 90px;border-top:1px solid rgba(198,161,91,.3);position:relative;overflow:hidden}
+footer{background-color:var(--navy);color:var(--ivory);text-align:center;padding:70px 22px 90px;border-top:1px solid rgba(198,161,91,.3);position:relative;overflow:hidden}
 .monograma{font-family:var(--serif);font-size:2.8rem;font-weight:400;color:var(--gold);letter-spacing:.06em;line-height:1.3}
 .monograma .yy{font-size:.7em;color:var(--gold-soft)}
+footer > *:not(.flor){position:relative;z-index:1}
 footer .gracias{font-family:var(--script);font-size:2.5rem;color:var(--gold-soft);line-height:1.4;padding:0 .3em}
 footer .marca{margin-top:38px;font-size:.62rem;letter-spacing:.4em;text-transform:uppercase;color:rgba(248,244,236,.5)}
 footer .marca b{display:block;font-family:var(--serif);font-weight:500;font-size:1rem;letter-spacing:.3em;color:var(--gold);margin-top:6px}
@@ -375,7 +376,7 @@ footer .marca b{display:block;font-family:var(--serif);font-weight:500;font-size
 .sep{position:absolute;top:26px;left:50%;width:170px;margin-left:-85px;color:var(--gold);opacity:.85;pointer-events:none;z-index:1}
 .sep svg{width:100%;height:auto;display:block}
 /* Ramitas doradas en las esquinas de las secciones */
-.rama{position:absolute;width:118px;color:var(--gold);opacity:.38;pointer-events:none;z-index:0;transform-origin:bottom left;animation:ramaMece 7s ease-in-out infinite}
+.rama{position:absolute;width:118px;color:var(--gold);opacity:.3;pointer-events:none;z-index:0;transform-origin:bottom left;animation:ramaMece 7s ease-in-out infinite}
 .rama svg{width:100%;height:auto;display:block}
 .rama.a{left:-14px;top:40px}
 .rama.b{right:-14px;bottom:30px;transform:scaleX(-1);transform-origin:bottom right;animation-name:ramaMeceB}
@@ -393,15 +394,23 @@ footer .marca b{display:block;font-family:var(--serif);font-weight:500;font-size
 /* Puntos dorados flotantes (bokeh) en secciones oscuras */
 .bokeh{position:absolute;border-radius:50%;border:1px solid rgba(198,161,91,.35);pointer-events:none;z-index:0;animation:flotar 11s ease-in-out infinite alternate}
 
+/* Flores blancas reales en las secciones azules */
+.flor{position:absolute;pointer-events:none;z-index:0;--r:0deg;rotate:var(--r);filter:drop-shadow(0 12px 22px rgba(0,0,0,.45));animation:florMece 9s ease-in-out infinite}
+.flor.g{width:min(250px,50vw)}
+.flor.p{width:min(170px,38vw)}
+@keyframes florMece{0%,100%{rotate:var(--r)}50%{rotate:calc(var(--r) + 3deg)}}
+.flor-sobre{position:absolute;z-index:6;width:42%;left:-14%;bottom:-22%;pointer-events:none;rotate:12deg;filter:drop-shadow(0 10px 16px rgba(0,0,0,.5));transition:opacity .6s}
+#portada.abriendo .flor-sobre{opacity:0}
+
 /* ================= VISTA PREVIA DEL MENSAJE ================= */
 .preview{margin:8px 0 22px;border:1px solid rgba(198,161,91,.55);overflow:hidden;box-shadow:0 10px 26px rgba(14,26,48,.1)}
-.pv-head{display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--navy) var(--rombos);color:var(--ivory)}
+.pv-head{display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--navy);color:var(--ivory)}
 .pv-av{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;flex-shrink:0;
   background:radial-gradient(circle at 34% 28%,#f0dba6,#c6a15b 50%,#94712f);color:var(--navy);font-family:var(--serif);font-size:1.3rem;font-weight:500;font-style:italic}
 .pv-head b{display:block;font-weight:400;font-size:.95rem;letter-spacing:.04em;line-height:1.2}
 .pv-head small{font-size:.66rem;letter-spacing:.14em;color:var(--gold-soft);text-transform:uppercase}
 .pv-head svg{width:20px;height:20px;margin-left:auto;color:var(--gold)}
-.pv-chat{padding:18px 12px 16px;background:var(--ivory-2) var(--rombos-claro);min-height:120px;display:flex;flex-direction:column;align-items:flex-end}
+.pv-chat{padding:18px 12px 16px;background:var(--ivory-2) var(--grano-claro);min-height:120px;display:flex;flex-direction:column;align-items:flex-end}
 .pv-dia{align-self:center;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);background:rgba(248,244,236,.9);padding:3px 10px;margin-bottom:12px;border:1px solid rgba(198,161,91,.25)}
 .pv-burbuja{position:relative;max-width:92%;background:#f6ecd2;border:1px solid rgba(198,161,91,.45);padding:10px 12px 18px;border-radius:12px 2px 12px 12px;
   font-size:.9rem;line-height:1.55;color:var(--ink);white-space:normal;word-wrap:break-word;box-shadow:0 2px 6px rgba(14,26,48,.08);transition:transform .2s}
@@ -472,6 +481,7 @@ const CONFIG = {
         <div class="tri"></div>
         <svg viewBox="0 0 150 60" preserveAspectRatio="none" fill="none" stroke="#c6a15b" stroke-opacity=".7"><path d="M0 0 L75 60 L150 0" vector-effect="non-scaling-stroke"/></svg>
       </div>
+      <img class="flor-sobre" src="img/flores.png" alt="">
       <button class="sello" id="btnAbrir" aria-label="Abrir invitación">I<span style="font-size:.7em;margin:0 1px">y</span>S</button>
     </div>
 
@@ -764,7 +774,7 @@ const CONFIG = {
 <!-- ============ FOOTER ============ -->
 <footer>
   <div class="monograma oro reveal zoom">I<span class="yy">y</span>S</div>
-  <div class="gracias escribe">¡Te esperamos!</div>
+  <div class="gracias reveal">¡Te esperamos!</div>
   <p class="muted" style="margin-top:6px;letter-spacing:.2em;font-size:.78rem;color:rgba(248,244,236,.7)">05 · DICIEMBRE · 2026</p>
   <div class="marca">Invitación digital por<b>MENDOZA INVITACIONES</b></div>
 </footer>
@@ -1097,35 +1107,37 @@ const CONFIG = {
     window.open('https://wa.me/' + destino().tel + '?text=' + encodeURIComponent(construirMensaje()), '_blank');
   });
 
-  /* ================= ORNAMENTOS DORADOS ================= */
-  const SVG_ESQ = '<svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1"><path d="M1 30V1h29"/><path d="M6 22V6h16" stroke-opacity=".55"/><path d="M1 12c6 0 11-5 11-11" stroke-opacity=".7"/><path d="M11 11l4 4" /><rect x="9.2" y="9.2" width="4" height="4" transform="rotate(45 11.2 11.2)" fill="currentColor" stroke="none"/><circle cx="30" cy="1" r="1.3" fill="currentColor" stroke="none"/><circle cx="1" cy="30" r="1.3" fill="currentColor" stroke="none"/></svg>';
+  /* ================= ORNAMENTOS ================= */
+  // Esquinas doradas sencillas para los marcos
+  const SVG_ESQ = '<svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1"><path d="M1 26V1h25"/><rect x="5" y="5" width="5" height="5" transform="rotate(45 7.5 7.5)" fill="currentColor" stroke="none"/></svg>';
   function esquinas(el, chica){
-    ['tl','tr','bl','br'].forEach(k => { const s = document.createElement('span'); s.className = 'esq ' + k + (chica ? ' chica' : ''); s.innerHTML = SVG_ESQ; el.appendChild(s); });
+    ['tl','tr','bl','br'].forEach(k => { const e = document.createElement('span'); e.className = 'esq ' + k + (chica ? ' chica' : ''); e.innerHTML = SVG_ESQ; el.appendChild(e); });
   }
   $$('.rsvp-box, .cuenta-banco, .hero-marco').forEach(el => esquinas(el, false));
-  $$('.lugar, .cuenta div').forEach(el => esquinas(el, true));
+  $$('.lugar').forEach(el => esquinas(el, true));
 
-  const SVG_SEP = '<svg viewBox="0 0 170 18" fill="none" stroke="currentColor" stroke-width="1"><path d="M0 9h62M108 9h62" stroke-opacity=".6"/><path d="M85 1l8 8-8 8-8-8z"/><path d="M85 5l4 4-4 4-4-4z" fill="currentColor" stroke="none"/><path d="M66 9c4-5 8-5 11 0M104 9c-4-5-8-5-11 0"/><circle cx="58" cy="9" r="1.6" fill="currentColor" stroke="none"/><circle cx="112" cy="9" r="1.6" fill="currentColor" stroke="none"/></svg>';
-  $$('section').forEach(sec => { const d = document.createElement('div'); d.className = 'sep'; d.innerHTML = SVG_SEP; sec.prepend(d); });
-
-  const SVG_RAMA = '<svg viewBox="0 0 120 170" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"><path d="M8 168C26 128 44 82 96 16"/><path d="M26 126c-14-3-22-14-21-27 12 3 20 13 21 27z"/><path d="M36 104c14-1 25-11 27-25-14 1-25 11-27 25z"/><path d="M47 84c-13-6-19-18-17-31 12 5 18 17 17 31z"/><path d="M60 64c12-3 21-13 22-26-12 3-21 13-22 26z"/><path d="M73 46c-11-6-15-17-12-28 10 5 14 16 12 28z"/><path d="M96 16c3-6 9-9 15-8M96 16c-1-6 1-12 6-15"/><g fill="currentColor" stroke="none"><circle cx="111" cy="8" r="2.2"/><circle cx="102" cy="1.8" r="1.8"/><circle cx="88" cy="30" r="1.6"/><circle cx="20" cy="150" r="1.4"/><circle cx="66" cy="96" r="1.5"/><circle cx="84" cy="54" r="1.3"/></g></svg>';
-  $$('section:not(.oscuro)').forEach(sec => {
-    ['a','b'].forEach(k => { const r = document.createElement('div'); r.className = 'rama ' + k; r.innerHTML = SVG_RAMA; sec.appendChild(r); });
+  // Una ramita dorada por sección clara, alternando lados
+  const SVG_RAMA = '<svg viewBox="0 0 120 170" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"><path d="M8 168C26 128 44 82 96 16"/><path d="M26 126c-14-3-22-14-21-27 12 3 20 13 21 27z"/><path d="M36 104c14-1 25-11 27-25-14 1-25 11-27 25z"/><path d="M47 84c-13-6-19-18-17-31 12 5 18 17 17 31z"/><path d="M60 64c12-3 21-13 22-26-12 3-21 13-22 26z"/><path d="M73 46c-11-6-15-17-12-28 10 5 14 16 12 28z"/><g fill="currentColor" stroke="none"><circle cx="100" cy="10" r="2"/><circle cx="20" cy="150" r="1.4"/><circle cx="84" cy="54" r="1.3"/></g></svg>';
+  $$('section:not(.oscuro)').forEach((sec, i) => {
+    const r = document.createElement('div'); r.className = 'rama ' + (i % 2 ? 'b' : 'a'); r.innerHTML = SVG_RAMA; sec.appendChild(r);
   });
-  $$('section.oscuro').forEach((sec, i) => {
-    [[8,14,70],[78,60,110],[30,82,46]].forEach(([x,y,t], j) => {
-      const b = document.createElement('span'); b.className = 'bokeh';
-      b.style.cssText = `left:${(x + i*7) % 90}%;top:${y}%;width:${t}px;height:${t}px;animation-delay:${-j*3}s`;
-      sec.appendChild(b);
+
+  // Flores blancas en las secciones azules (posiciones alternadas)
+  const FLORES = [
+    [{f:'flores',t:'g',css:'right:-70px;top:-40px',r:-160}, {f:'gypso',t:'p',css:'left:-30px;bottom:-10px',r:20}],
+    [{f:'flores',t:'g',css:'left:-80px;bottom:-50px',r:30}],
+    [{f:'gypso',t:'p',css:'left:-24px;top:10px',r:-25}, {f:'flores',t:'g',css:'right:-80px;bottom:-60px',r:-30}],
+    [{f:'flores',t:'g',css:'left:-80px;top:-50px',r:150}],
+  ];
+  $$('section.oscuro, footer').forEach((sec, i) => {
+    (FLORES[i % FLORES.length]).forEach(o => {
+      const im = document.createElement('img');
+      im.src = 'img/' + o.f + '.png'; im.alt = ''; im.loading = 'lazy';
+      im.className = 'flor ' + o.t; im.style.cssText = o.css; im.style.setProperty('--r', o.r + 'deg');
+      im.style.animationDelay = (-i * 2) + 's';
+      sec.appendChild(im);
     });
   });
-  // Sol art déco en la cuenta regresiva
-  const secCuenta = $('#cuenta').closest('section');
-  let rayos = '';
-  for (let i = 0; i < 48; i++){ const a = i * Math.PI / 24, r1 = i % 2 ? 150 : 120; rayos += `<line x1="${380 + Math.cos(a)*r1}" y1="${380 + Math.sin(a)*r1}" x2="${380 + Math.cos(a)*370}" y2="${380 + Math.sin(a)*370}"/>`; }
-  const sol = document.createElement('div'); sol.className = 'sol';
-  sol.innerHTML = `<svg viewBox="0 0 760 760" fill="none" stroke="currentColor" stroke-width="1">${rayos}<circle cx="380" cy="380" r="100"/><circle cx="380" cy="380" r="112" stroke-dasharray="2 6"/></svg>`;
-  secCuenta.prepend(sol);
 })();
 </script>
 </body>
