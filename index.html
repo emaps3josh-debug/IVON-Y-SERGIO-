@@ -271,6 +271,15 @@ p.lead{font-family:var(--serif);font-size:1.35rem;line-height:1.6;font-style:ita
 .vest svg:active{transform:scale(1.25)}
 .vest-tit{font-family:var(--serif);font-size:1.9rem;font-weight:500;color:var(--navy);letter-spacing:.06em}
 
+.evitar{margin-top:26px}
+.evitar-tit{font-size:.68rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.evitar-colores{display:flex;justify-content:center;gap:34px;margin-bottom:12px}
+.evitar-colores div{display:flex;flex-direction:column;align-items:center;gap:8px;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--navy)}
+.muestra{position:relative;width:44px;height:44px;border-radius:50%;border:1px solid rgba(198,161,91,.6);box-shadow:0 0 0 4px var(--ivory-2),0 0 0 5px rgba(198,161,91,.35)}
+.muestra.blanco{background:#ffffff}
+.muestra.rojo{background:#b3262e}
+.muestra::after{content:"";position:absolute;left:50%;top:-4px;bottom:-4px;width:1.5px;margin-left:-.75px;background:var(--navy);transform:rotate(45deg);opacity:.75}
+
 /* ---------- Galería ---------- */
 .galeria{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;max-width:960px;margin:0 auto;position:relative;z-index:1}
 @media(min-width:760px){.galeria{grid-template-columns:repeat(3,1fr);gap:12px}}
@@ -630,7 +639,14 @@ const CONFIG = {
       <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M19 4v6l-3 6 3 6-9 20h28l-9-20 3-6-3-6V4"/><path d="M19 10h10M16 16h16"/></svg>
     </div>
     <div class="vest-tit">Formal / Casual</div>
-    <p class="muted" style="margin-top:6px">Te sugerimos evitar el color blanco, reservado para la novia.</p>
+    <div class="evitar">
+      <div class="evitar-tit">Colores a evitar</div>
+      <div class="evitar-colores">
+        <div><span class="muestra blanco"></span>Blanco</div>
+        <div><span class="muestra rojo"></span>Rojo</div>
+      </div>
+      <p class="muted">El blanco está reservado para la novia; te pedimos evitar también el rojo.</p>
+    </div>
   </div>
 </section>
 
@@ -671,7 +687,7 @@ const CONFIG = {
     </div>
     <div class="videos">
       <video class="reveal izq" src="video/momento1.mp4" poster="video/momento1.jpg" muted loop playsinline autoplay preload="metadata"></video>
-      <video class="reveal der" src="video/momento2.mp4" poster="video/momento2.jpg" muted loop playsinline autoplay preload="metadata"></video>
+      <video class="reveal der" src="video/momento3.mp4" poster="video/momento3.jpg" muted loop playsinline autoplay preload="metadata"></video>
     </div>
   </div>
 </section>
